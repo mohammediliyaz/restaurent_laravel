@@ -3,9 +3,10 @@
 @extends('layout')
 
 @section('content')
-<h2>show home pagecontent</h2>
+
 
 <div class='container'>
+<h2>Pizzas Home Page</h2>
 <div style="display:grid; grid-template-columns:auto auto auto; grid-row-gap:20px;">
 @foreach($data as $item)
 

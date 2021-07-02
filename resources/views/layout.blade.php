@@ -21,8 +21,13 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
       <a class="nav-item nav-link" href="/list">List</a>
       <a class="nav-item nav-link" href="/add">Add</a>
       <a class="nav-item nav-link" href="#">Search</a>
-      <a class="nav-item nav-link " href="#">Login</a>
+      @if(!Session::get('user'))
+      <a class="nav-item nav-link " href="login">Login</a>
       <a class="nav-item nav-link " href="/register">Register</a>
+      @else
+        <a class="nav-item nav-link "><i class='fas fa-user'></i>  {{Session::get('user')}} </a>
+      <a class="nav-item nav-link " href="/logout">Logout</a>
+      @endif
     </div>
   </div>
 </nav>
