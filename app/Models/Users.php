@@ -9,5 +9,5 @@ class Users extends Model
 {
     use HasFactory;
 
-    public $table = 'users';
+    // public $table = 'users';
 }

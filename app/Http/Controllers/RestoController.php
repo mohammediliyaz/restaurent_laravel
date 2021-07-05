@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 use App\Models\Restaus;
-use App\Models\Users;
+use App\Models\User;
 use Illuminate\Support\Facades\Crypt;
 use Session;
 
@@ -15,6 +15,7 @@ class RestoController extends Controller
     public function index(Request $req){
         $reqq = Http::get('http://mypizza.dd:8083/api/pizzas?_format=hal_json');
         $data =  $reqq->json();
+
 
 
        return view('home',['data' => $data]);
@@ -59,7 +60,7 @@ class RestoController extends Controller
     }
     public function register(Request $req){
 
-        $users = new Users;
+        $users = new User;
         $users->name = $req->input('name');
         $users->email = $req->input('email');
         $users->password =Crypt::encrypt($req->input('password'));
@@ -69,12 +70,16 @@ class RestoController extends Controller
         return redirect('login');
     }
     public function login(Request $req){
-        $user =  Users::where('email',$req->input('email'))->get();
+        $user =  User::where('email',$req->input('email'))->get();
 
         if(Crypt::decrypt($user[0]->password) == $req->input('password')){
-            $req->session()->put('user',$user[0]->name);
+            $req->session()->put('user',$user[0]->Name);
             return redirect('/');
         }
+        else{
+            return view('loginresponse',['user' => $user]);
+        }
+
 
     }
 
@@ -82,5 +87,10 @@ class RestoController extends Controller
         Session::forget('user');
         return redirect('login');
     }
+
+
+
+
+
 }
 

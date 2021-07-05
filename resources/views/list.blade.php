@@ -25,9 +25,9 @@
   @foreach($data as $item)
     <tr>
       <th scope="row">{{ $item->id }}</th>
-      <td>{{ $item->Name }}</td>
-      <td>{{ $item->Email }}</td>
-      <td>{{ $item->Address }}</td>
+      <td>{{ $item->name }}</td>
+      <td>{{ $item->email }}</td>
+      <td>{{ $item->address }}</td>
       <td>
       <a href="/delete/{{ $item->id }}"><i class="fas fa-trash"></i>delete </a>
       <a href="/edit/{{ $item->id }}"><i class="fas fa-edit"></i>edit </a>

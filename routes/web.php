@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RestoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware'=>'web'], function () {
-    Route::get('/','App\Http\Controllers\RestoController@index');
-    Route::get('/list','App\Http\Controllers\RestoController@list');
+    Route::get('/',[RestoController::class,'index']);
+    // Route::get('/list','App\Http\Controllers\RestoController@list');
+    Route::get('/list',[RestoController::class,'list']);
     Route::view('/add','add');
     Route::post('/add','App\Http\Controllers\RestoController@add');
     Route::get('/delete/{id}','App\Http\Controllers\RestoController@delete');
