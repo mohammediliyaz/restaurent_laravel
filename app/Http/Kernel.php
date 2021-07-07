@@ -1,9 +1,15 @@
 <?php
 
+/**
+ * @file
+ */
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
+/**
+ * {@inheritDoc}
+ */
 class Kernel extends HttpKernel
 {
     /**

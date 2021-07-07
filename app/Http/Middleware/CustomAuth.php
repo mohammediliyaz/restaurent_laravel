@@ -10,9 +10,8 @@ class CustomAuth
 {
     /**
      * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request  $request.
+     * @param \Closure  $next.
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
@@ -20,7 +19,7 @@ class CustomAuth
 
          $path = $request->path();
         $user = Session::get('user');
-        if(strlen($user)==0 && ($path == 'list' || $path == '/' || $path == 'add')){
+        if (strlen($user)==0 && ($path == 'list' || $path == '/' || $path == 'add')) {
             return redirect('login');
         }
 
